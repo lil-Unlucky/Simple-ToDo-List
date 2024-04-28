@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+25&family=Oswald:wght@200..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(118,167,224,1) 100%);
+}
+
+.todo-app {
+    position: relative;
+    left: 0;
+    top: 0;
+    margin: 50px auto;
+    width: 600px;
+    height: 700px;
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 10px 5px;
+
+    .todo-app__header {
+        font-family: "Jersey 25", sans-serif;
+        font-size: 24px;
+        font-weight: 600;
+        user-select: none;
+        display: flex;
+        width: 100%;
+        height: 55px;
+        border-bottom: 2px solid gray;
+
+        .todo-app__header-task-id,
+        .todo-app__header-task-name,
+        .todo-app__header-task-buttons
+        .task-buttons__add-new,
+        .task-buttons__remove-last {
+            margin-left: 10px;
+        }
+
+        .todo-app__header-task-name,
+        .todo-app__header-task-id {
+            border-right: 2px solid gray;
+        }
+
+        .todo-app__header-task-id,
+        .todo-app__header-task-name,
+        .todo-app__header-task-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .todo-app__header-task-id {
+            margin-left: 0;
+            width: 10%;
+        }
+
+        .todo-app__header-task-name {
+            width: 70%;
+        }
+
+        .todo-app__header-task-buttons {
+            width: 20%;
+        }
+        .task-buttons__add-new,
+        .task-buttons__remove-last {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            border: 1px solid black;
+            border-radius: 14px;
+            transition: all .2s ease-in-out;
+        }
+        .task-buttons__add-new:hover,
+        .task-buttons__remove-last:hover {
+            cursor: pointer;
+            background-color: rgb(235, 235, 235);
+        }
+        
+    }
+
+    .todo-app__main {
+        font-family: "Oswald", sans-serif;
+        margin-top: 25px;
+        width: 100%;
+        background-color: whitesmoke;
+
+        .todo-app__item {
+            margin-bottom: 10px;
+            background-color: #ffd9d9;
+            border-radius: 12px;
+            padding: 6px;
+            width: 100%;
+            display: flex;
+            border: 1px solid black;
+
+            .todo-app__item-left,
+            .todo-app__item-middle,
+            .todo-app__item-right {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+            }
+
+            .todo-app__item-left,
+            .todo-app__item-middle {
+                border-right: 1px solid black;
+            }
+
+            .todo-app__item-left {
+                font-size: 24px;
+                font-weight: 600;
+                width: 10%;
+            }
+            .todo-app__item-middle {
+                margin-left: 10px;
+                justify-content: space-between;
+                width: 70%;
+
+                textarea {
+                    font-weight: 600;
+                    resize: none;
+                    width: 80%;
+                    height: 100%;
+                }
+
+                .item-middle__change-title {
+                    padding: 2px;
+                    font-size: 20px;
+                    font-weight: 600;
+                    border: 1px solid black;
+                    transition: all .2s ease-in-out;
+                    border-radius: 4px;
+                    margin-right: 10px;
+                }
+                .item-middle__change-title:hover {
+                    cursor: pointer;
+                    background-color: rgb(235, 235, 235);
+                }
+            }
+            .todo-app__item-right {
+                width: 20%;
+
+                .item-right {
+                    margin-right: 4px;
+                }
+                .item-right:last-child {
+                    margin-right: 0;
+                }
+
+                .item-right__delete-task,
+                .item-right__make-done,
+                .item-right__make-active {
+                    padding: 2px;
+                    font-size: 24px;
+                    font-weight: 600;
+                    border: 1px solid black;
+                    transition: all .2s ease-in-out;
+                    border-radius: 3px;
+                }
+                .item-right__delete-task:hover,
+                .item-right__make-done:hover,
+                .item-right__make-active:hover {
+                    cursor: pointer;
+                    background-color: rgb(235, 235, 235);
+                }
+            }
+        }
+        .todo-app__item:last-child {
+            margin-bottom: 0;
+        }
+
+    }
+}
+
+// MODAL
+.modal-create-task {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: 200px auto;
+    width: 60%;
+    height: 150px;
+    background-color: rgba(63, 255, 236, .75);
+    border-radius: 6px;
+
+    .modal-title {
+        user-select: none;
+        font-size: 18px;
+        font-weight: 600;
+        padding-top: 25px;
+        width: 100%;
+        height: 25px;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+
+    .modal-create-task__close-modal {
+        text-align: center;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        font-size: 20px;
+        transition: all .15s ease-in-out;
+    }
+    .modal-create-task__close-modal:hover {
+        cursor: pointer;
+        scale: 1.25;
+        rotate: 180deg;
+    }
+
+    .create-task-field {
+        display: flex;
+
+        .input-new-task-title-field {
+            z-index: 3;
+            font-size: 18px;
+            padding-left: 10px;
+            border: none;
+            width: 250px;
+            height: 30px;
+            border-radius: 4px 0 0 4px;
+
+        }
+        .input-new-task-title-field:focus {
+            outline: none;
+        }
+        .create-task-field__apply-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            width: 45px;
+            height: 30px;
+            background-color: #9e9e;
+            border-radius: 0 4px 4px 0;
+            transition: all .2s ease-in-out;
+        }
+        .create-task-field__apply-button:hover {
+            cursor: pointer;
+            background-color: rgb(122, 241, 122);
+        }
+    }
+}
+
+.modal-create-task.active {
+    display: flex;
+}
+
+// RENAME MODAL
+.modal-rename-task.active {
+    display: flex;
+}
+.modal-rename-task {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin: 200px auto;
+    width: 60%;
+    height: 150px;
+    background-color: rgba(110, 245, 232, 0.75);
+    border-radius: 6px;
+
+    .modal-title {
+        user-select: none;
+        font-size: 18px;
+        font-weight: 600;
+        padding-top: 25px;
+        width: 100%;
+        height: 25px;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+    }
+
+    .modal-rename-task__close-modal {
+        text-align: center;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        font-size: 20px;
+        transition: all .15s ease-in-out;
+    }
+    .modal-rename-task__close-modal:hover {
+        cursor: pointer;
+        scale: 1.25;
+        rotate: 180deg;
+    }
+
+    .rename-task-field {
+        display: flex;
+
+        .input-new-task-name-field {
+            z-index: 3;
+            font-size: 18px;
+            padding-left: 10px;
+            border: none;
+            width: 250px;
+            height: 30px;
+            border-radius: 4px 0 0 4px;
+
+        }
+        .input-new-task-name-field:focus {
+            outline: none;
+        }
+        .rename-task-field__apply-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            width: 45px;
+            height: 30px;
+            background-color: rgba(153, 167, 238, 0.9);
+            border-radius: 0 4px 4px 0;
+            transition: all .2s ease-in-out;
+        }
+        .rename-task-field__apply-button:hover {
+            cursor: pointer;
+            background-color: rgb(156, 122, 241);
+        }
+    }
+}

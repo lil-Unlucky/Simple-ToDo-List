@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="description" content="To Do List.">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+
+        <!-- custom styles -->
+        <link rel="stylesheet" href="assets/css/index.css">
+
+        <!-- Remix-Icons -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.min.css" integrity="sha512-MqL4+Io386IOPMKKyplKII0pVW5e+kb+PI/I3N87G3fHIfrgNNsRpzIXEi+0MQC0sR9xZNqZqCYVcC61fL5+Vg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <title>To Do List | Unlucky</title>
+
+    </head>
+
+    <body>
+
+        <div class="todo-app">
+
+            <div class="todo-app__header">
+                <div class="todo-app__header-task-id" title="Task ID"><span>ID</span></div>
+                <div class="todo-app__header-task-name" title="Task title"><span>Task</span></div>
+                <div class="todo-app__header-task-buttons">
+                    <div class="task-buttons__add-new" title="Add new task"><i class="ri-add-circle-line"></i></div>
+                    <div class="task-buttons__remove-last" title="Remove last task"><i class="ri-close-circle-line"></i></div>
+                </div>
+            </div>
+
+            <div class="todo-app__main"></div>
+
+            <div class="modal-create-task">
+
+                <div class="modal-title"><span>Enter the task name</span></div>
+
+                <div class="create-task-field">
+
+                    <input type="text" class="input-new-task-title-field" name="newTaskName" placeholder="Enter your task...">
+                    <div class="create-task-field__apply-button" title="Apply"><i class="ri-edit-2-line"></i></div>
+
+                </div>
+
+                <div class="modal-create-task__close-modal"><i class="ri-close-large-line"></i></div>
+            </div>
+
+            <div class="modal-rename-task">
+
+                <div class="modal-title"><span>Enter new task name</span></div>
+
+                <div class="rename-task-field">
+
+                    <input type="text" class="input-new-task-name-field" name="changeTaskName" placeholder="Enter new task name...">
+                    <div class="rename-task-field__apply-button" title="Apply"><i class="ri-edit-2-line"></i></div>
+
+                </div>
+
+                <div class="modal-rename-task__close-modal"><i class="ri-close-large-line"></i></div>
+            </div>
+
+        </div>
+
+        <script src="assets/js/index.js"></script>
+
+    </body>
+
+</html>
